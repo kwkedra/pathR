@@ -17,10 +17,10 @@
 #' # normalize segment length
 #' paths.smooth <- smooth.paths(paths, length.f = .10)
 #' # plot
-#' plot.paths(pts, distal.pts, paths.smooth)
+#' plot_paths(pts, distal.pts, paths.smooth)
 #'
 #' @export
-plot.paths <- function(pts, distal.pts, paths.smooth) {
+plot_paths <- function(pts, distal.pts, paths.smooth) {
 cex1 = 1; cex2 = .8
 x11(width=14, height=7); par(mfrow=c(1,2))
 plot(pts[,1], pts[,2], asp=1, main="XY paths", xlab="X (m)", ylab="Y (m)", pch=16, cex=.2, col=rgb(0,0,0,.02))
