@@ -3,6 +3,6 @@
 export(find.paths)
 export(get.distal.pts)
 export(paths.metrics)
-export(plot_paths)
+export(project.paths)
 export(read.cloud)
 export(smooth.paths)

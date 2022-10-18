@@ -1,6 +1,6 @@
 #' Plot classified paths  
 #'
-#' The paths (classified as plagiotropic or orthotropic) are projected onto vertical and horizontal planes
+#' The paths (classified as plagiotropic or orthotropic) are projected onto vertical and horizontal planes.
 #' 
 #' @param pts and object created using the function read.cloud().
 #' @param distal.pts an object created using the function get.distal.pts(). 
@@ -17,10 +17,10 @@
 #' # normalize segment length
 #' paths.smooth <- smooth.paths(paths, length.f = .10)
 #' # plot
-#' plot_paths(pts, distal.pts, paths.smooth)
+#' project.paths(pts, distal.pts, paths.smooth)
 #'
 #' @export
-plot_paths <- function(pts, distal.pts, paths.smooth) {
+project.paths <- function(pts, distal.pts, paths.smooth) {
 cex1 = 1; cex2 = .8
 x11(width=14, height=7); par(mfrow=c(1,2))
 plot(pts[,1], pts[,2], asp=1, main="XY paths", xlab="X (m)", ylab="Y (m)", pch=16, cex=.2, col=rgb(0,0,0,.02))
