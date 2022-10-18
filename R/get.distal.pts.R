@@ -1,6 +1,6 @@
 #' Sample the point cloud  
 #'
-#' Get the starting positions of paths. This includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are 100 points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.   
+#' Get the starting positions of paths. The output set of points includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are 100 points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.   
 #' 
 #' @param pts and object created using the function read.cloud().
 #' @param min.z value, minimal height of points sampled.

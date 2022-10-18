@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "k.w.kedra@gmail.com",
            comment = c(ORCID = "0000-0001-6914-908X"))
-Description: Automated quantification of an individual tree plagiotropic vs. orthotropic growth orientation, using TLS point cloud. These data may be usefull in several ecological contexts, e.g., assessment of: tree/forest structural diversity; tree architecture convergence/divergence; water management by tree branching systems; light exploitation and space exploration potential.
+Description: Automated quantification of an individual tree plagiotropic vs. orthotropic growth orientation, using TLS point cloud. These data may be useful in several ecological contexts, e.g., assessment of: tree/forest structural diversity; tree architecture convergence/divergence; water management by tree branching systems; light exploitation and space exploration potential.
 License: `use_gpl3_license()`
 Encoding: UTF-8
 LazyData: true
