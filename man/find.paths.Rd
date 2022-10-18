@@ -11,7 +11,7 @@ find.paths(pts, distal.pts, proximal.z, min.range, max.range)
 
 \item{distal.pts}{an object created using the function get.distal.pts().}
 
-\item{proximal.z}{value, end point height (typically, tree base \link{0.0}, or breast height).}
+\item{proximal.z}{value, paths' end point height (typically, 0.0 or breast height).}
 
 \item{min.range}{value, minimal search radius.}
 

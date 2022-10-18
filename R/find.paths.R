@@ -4,7 +4,7 @@
 #' 
 #' @param pts and object created using the function read.cloud().
 #' @param distal.pts an object created using the function get.distal.pts(). 
-#' @param proximal.z value, end point height (typically, tree base [0.0], or breast height).
+#' @param proximal.z value, paths' end point height (typically, 0.0 or breast height).
 #' @param min.range value, minimal search radius.
 #' @param max.range value, maximal search radius.
 #' @return a list including the created paths.
