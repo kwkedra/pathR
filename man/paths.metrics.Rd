@@ -9,7 +9,7 @@ paths.metrics(distal.pts, paths.smooth, plot = TRUE)
 \arguments{
 \item{distal.pts}{an object created using the function get.distal.pts().}
 
-\item{paths.smooth}{and object created using the function smooth.paths().}
+\item{paths.smooth}{an object created using the function smooth.paths().}
 
 \item{plot}{logical, if TRUE the histogram of segment angles is plotted.}
 }

@@ -2,7 +2,7 @@
 #'
 #' Normalize segment length within the paths.
 #' 
-#' @param paths and object created using the function find.paths().
+#' @param paths an object created using the function find.paths().
 #' @param length.f value, new segment length (should be larger than max.range in find.paths()).
 #' @return a list including smoothed paths.
 #'

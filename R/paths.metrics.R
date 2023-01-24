@@ -7,7 +7,7 @@
 #' plagio.all (percent of full and partial plagiotropic paths).
 #' 
 #' @param distal.pts an object created using the function get.distal.pts(). 
-#' @param paths.smooth and object created using the function smooth.paths().
+#' @param paths.smooth an object created using the function smooth.paths().
 #' @param plot logical, if TRUE the histogram of segment angles is plotted.
 #' @return metrics as a data.frame.
 #'

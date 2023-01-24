@@ -7,7 +7,7 @@
 find.paths(pts, distal.pts, proximal.z, min.range, max.range)
 }
 \arguments{
-\item{pts}{and object created using the function read.cloud().}
+\item{pts}{an object created using the function read.cloud().}
 
 \item{distal.pts}{an object created using the function get.distal.pts().}
 

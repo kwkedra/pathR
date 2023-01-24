@@ -7,11 +7,11 @@
 project.paths(pts, distal.pts, paths.smooth)
 }
 \arguments{
-\item{pts}{and object created using the function read.cloud().}
+\item{pts}{an object created using the function read.cloud().}
 
 \item{distal.pts}{an object created using the function get.distal.pts().}
 
-\item{paths.smooth}{and object created using the function smooth.paths().}
+\item{paths.smooth}{an object created using the function smooth.paths().}
 }
 \value{
 no data are returned.

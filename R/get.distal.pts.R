@@ -1,9 +1,10 @@
 #' Sample the point cloud  
 #'
-#' Get the starting positions of paths. The output set of points includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are 100 points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.   
+#' Get the starting positions of paths. The output set of points includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are n points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.   
 #' 
-#' @param pts and object created using the function read.cloud().
+#' @param pts an object created using the function read.cloud().
 #' @param min.z value, minimal height of points sampled.
+#' @param n.points value, number of points sampled per each meter of tree vertical extent; if missing, the value is set to 100.
 #' @param plot logical, if TRUE the sampled points are plotted in respect to horizontal and vertical planes. 
 #' @return a data.frame with sampled points coordinates.
 #'
@@ -14,8 +15,9 @@
 #' distal.pts <- get.distal.pts(pts, min.z = 1.3, plot = TRUE)
 #'
 #' @export
-get.distal.pts <- function(pts, min.z, plot) {
-sampled.pts <- round(max(pts[,3])*100,0)
+get.distal.pts <- function(pts, min.z, n.points, plot) {
+if(missing(n.points)){n.points<-100}
+sampled.pts <- round(max(pts[,3])*n.points,0)
 h <- pts[which(pts[,3]==max(pts[,3])),]
 chull <- pts[chull(data.frame(pts[,1], pts[,2])),]
   if(min(chull[,3])<min.z) {
@@ -24,7 +26,7 @@ chull <- pts[chull(data.frame(pts[,1], pts[,2])),]
 num.pts <- as.numeric(rownames(pts[which(pts[,3]>min.z),]))
 max.dist <- max( sqrt((pts[,1])^2+(pts[,2])^2+(pts[,3]-min.z)^2) )
 prbs <- sqrt((pts[,1])^2+(pts[,2])^2+(pts[,3]-min.z)^2) / max.dist
-set.seed(1); idx.pts <- sample(num.pts, sampled.pts, prob=prbs[num.pts]) 
+set.seed(n.points); idx.pts <- sample(num.pts, sampled.pts, prob=prbs[num.pts]) 
 r.pts <- pts[idx.pts,]
 if(plot){
 x11(width=14, height=7); par(mfrow=c(1,2))

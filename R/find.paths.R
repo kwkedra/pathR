@@ -2,7 +2,7 @@
 #'
 #' Detect paths from distal points to a proximal point. Plagiotropic path: includes at least one segment <=0.0 degree angle; orthotropic path: all segment angles >0.0 degree; 0 degree indicates a perfectly horizontal path segment.
 #' 
-#' @param pts and object created using the function read.cloud().
+#' @param pts an object created using the function read.cloud().
 #' @param distal.pts an object created using the function get.distal.pts(). 
 #' @param proximal.z value, paths' end point height (typically, 0.0 or breast height).
 #' @param min.range value, minimal search radius.
@@ -19,6 +19,8 @@
 #'
 #' @export
 find.paths <- function(pts, distal.pts, proximal.z, min.range, max.range) {
+distal.pts <- distal.pts[which(distal.pts[,3]>proximal.z),]
+if(proximal.z>max(pts[,3])){stop("proximal.z > tree height")}
 paths <- list()
 for ( i in 1:nrow(distal.pts) ) {
 node <- distal.pts[i,]
@@ -31,14 +33,16 @@ pts.x <- pts[which(pts[,1] > node.x-max.range & pts[,1] < node.x+max.range),]
 pts.y <- pts.x[which(pts.x[,2] > node.y-max.range & pts.x[,2] < node.y+max.range),]
 pts.z <- pts.y[which(pts.y[,3] > node.z-max.range & pts.y[,3] < node.z),]
 dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
-pts.z <- pts.z[which(dists < max.range),]
-dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
+pts.z <- pts.z[which(dists < max.range & dists > 0),]
+#dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
 	if ( nrow(pts.z)> 0 ) {
+	dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
 	if ( max(dists) > min.range ) {
 	pts.z <- pts.z[which(dists > min.range ),]
 	dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
-	}
 	node = pts.z[which(dists==min(dists))[1],1:3]
+	}else{
+	node = pts.z[which(dists==max(dists))[1],1:3] }
 }else{ endwhile <- 1 }
 }
 rownames(nodes) <- c(1:nrow(nodes))
@@ -71,13 +75,14 @@ pts.x <- pts[which(pts[,1] > node.x-max.range & pts[,1] < node.x+max.range),]
 pts.y <- pts.x[which(pts.x[,2] > node.y-max.range & pts.x[,2] < node.y+max.range),]
 pts.z <- pts.y[which(pts.y[,3] > node.z-max.range & pts.y[,3] < node.z+max.range),]
 dists <- sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
-pts.z <- pts.z[which(dists < max.range),]
-dist.test <- sqrt( (node.x)^2 + (node.y)^2  )
+pts.z <- pts.z[which(dists < max.range & dists > 0),]
+if ( nrow(pts.z)> 0 ) {
+dist.test <- sqrt( (node.x)^2 + (node.y)^2 )
 if( dist.test > (1/2)*dist.start & direction == "H" ) {
 	dists2 <- sqrt( (pts.z[,1])^2 + (pts.z[,2])^2  )
 	pts.z <- pts.z[which(dists2 < dist.test),]
 	dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
-	if ( length(dists) == 1 ) {if( dists==0 ) { direction <- "HV" }}
+	if ( length(dists) > 0 ) {if( max(dists) <= min.range ) { direction <- "HV" }}
 	} else {
 	direction <- "HV"
 	dist.test <- sqrt( (node.x)^2 + (node.y)^2 + (node.z-proximal.z)^2 )
@@ -89,9 +94,11 @@ if( dist.test > (1/2)*dist.start & direction == "H" ) {
 	if ( max(dists) > min.range ) {
 	pts.z <- pts.z[which(dists > min.range ),]
 	dists <-  sqrt( (pts.z[,1]-node.x)^2 + (pts.z[,2]-node.y)^2 + (pts.z[,3]-node.z)^2 )
-	}
 	node = pts.z[which(dists==min(dists))[1],1:3]
+	}else{
+	node = pts.z[which(dists==max(dists))[1],1:3] }
 	}else{ endwhile <- 1 }
+}else{ endwhile <- 1 }
 }
 rownames(nodes) <- c(1:nrow(nodes))
 paths2 <- append(paths2, list(nodes))

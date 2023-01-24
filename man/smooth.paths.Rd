@@ -7,7 +7,7 @@
 smooth.paths(paths, length.f)
 }
 \arguments{
-\item{paths}{and object created using the function find.paths().}
+\item{paths}{an object created using the function find.paths().}
 
 \item{length.f}{value, new segment length (should be larger than max.range in find.paths()).}
 }

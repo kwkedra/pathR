@@ -2,9 +2,9 @@
 #'
 #' The paths (classified as plagiotropic or orthotropic) are projected onto vertical and horizontal planes.
 #' 
-#' @param pts and object created using the function read.cloud().
+#' @param pts an object created using the function read.cloud().
 #' @param distal.pts an object created using the function get.distal.pts(). 
-#' @param paths.smooth and object created using the function smooth.paths().
+#' @param paths.smooth an object created using the function smooth.paths().
 #' @return no data are returned.
 #'
 #' @examples

@@ -4,12 +4,14 @@
 \alias{get.distal.pts}
 \title{Sample the point cloud}
 \usage{
-get.distal.pts(pts, min.z, plot)
+get.distal.pts(pts, min.z, n.points, plot)
 }
 \arguments{
-\item{pts}{and object created using the function read.cloud().}
+\item{pts}{an object created using the function read.cloud().}
 
 \item{min.z}{value, minimal height of points sampled.}
+
+\item{n.points}{value, number of points sampled per each meter of tree vertical extent; if missing, the value is set to 100.}
 
 \item{plot}{logical, if TRUE the sampled points are plotted in respect to horizontal and vertical planes.}
 }
@@ -17,7 +19,7 @@ get.distal.pts(pts, min.z, plot)
 a data.frame with sampled points coordinates.
 }
 \description{
-Get the starting positions of paths. The output set of points includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are 100 points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.
+Get the starting positions of paths. The output set of points includes: all points forming the crown projection convex chull (CPCH), a tree's highest point, and a set of randomly selected points. There are n points sampled per each meter of tree vertical extent. The probability of point selection is proportional to its distance from tree base.
 }
 \examples{
 # read point cloud
