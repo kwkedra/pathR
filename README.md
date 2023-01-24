@@ -2,6 +2,8 @@
 
 This package uses just base R, thus no other packages (dependencies) will be installed.
 
+### Instalation and basic information: 
+
 ``` r
 install.packages("remotes")
 remotes::install_github("kwkedra/pathR")
@@ -11,7 +13,8 @@ library("pathR")
 ?project.paths
 ```
 
-Multiple-trees assessment:
+
+### Multiple-trees assessment:
 
 ``` r
 # set folder with TLS point clouds:  
