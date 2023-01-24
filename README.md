@@ -2,7 +2,7 @@
 
 This package uses just base R, thus no other packages (dependencies) will be installed.
 
-### Instalation and basic information: 
+### Installation and basic information: 
 
 ``` r
 install.packages("remotes")
